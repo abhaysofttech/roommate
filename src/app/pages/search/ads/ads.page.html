@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/choice"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="main-container full-height">
+    <div class="row no-margin search-container">
+      <div class="col-12 container-padding">
+        <div class="card" *ngFor="let i of [0,1,2,3,4]">
+          <div class="card-body no-padding">
+
+            <ion-slides pager="true" [options]="slideOpts">
+              <ion-slide>
+                <img src="../../../../assets/images/image1.jpg">
+              </ion-slide>
+              <ion-slide>
+                <img src="../../../../assets/images/image2.jpg">
+              </ion-slide>
+              <ion-slide>
+                <img src="../../../../assets/images/image3.jpg">
+              </ion-slide>
+            </ion-slides>
+            <div class="adsDetails">
+              <div class="adsOwner"><span>Abhay,</span><span class="age"> 32 | </span><span class="gender"><i class="fa fa-male" aria-hidden="true"></i></span></div>
+              <div class="profilePicOwner">
+                <!-- <img src="../../../../assets/images/image3.jpg"> -->
+                <i class="fa fa-check-circle" aria-hidden="true"></i>
+              </div>
+              <div class="rentDetails"><span class="rupees_icon"><i class="fa fa-inr" aria-hidden="true"></i> </span><span class="amount"> 5000 </span><span class="month">/Month</span></div>
+              <div class="adsAddressDetails">
+                <div class="adsTitle">Shared Room for Male in Wagholi</div>
+                <div class="adsAddress">Baif Road Wagholi, Savvanha Socity</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

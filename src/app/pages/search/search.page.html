@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>search</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="row no-margin search-container">
+    <div class="col-12 container-padding">
+      <div class="card">
+        <div class="card-body">
+          <div class="search-box">
+            <div class="search-icon"><img src="../../../assets/images/search-icon.svg" /></div>
+            <div class="search-text">
+              <input type="text" class="search-area" />
+            </div>
+            <div class="location"><i class="fa fa-crosshairs" aria-hidden="true"></i></div>
+          </div>
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+            content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+          <h5>filters</h5>
+          <hr>
+          <div class="filter-title">Price Range: <span *ngIf="priceRange && priceRange > 900">800 to
+              {{priceRange}}</span></div>
+
+          <div class="range-box">
+            <span><i class="fa fa-inr" aria-hidden="true"></i> 800</span>
+            <div class="range-text">
+              <ion-range pin="true" min="800" max="10000" [(ngModel)]="priceRange" color="secondary"
+                style="padding-top:0px;">
+              </ion-range>
+            </div>
+            <span><i class="fa fa-inr" aria-hidden="true"></i>10K</span>
+          </div>
+          <div class="filter-title"><span>No.of Bedroom</span></div>
+          <div class="roomDetails">
+            <span class="room">1H</span>
+            <ion-chip *ngFor="let entry of bedRoom" (click)="selectBedroom(entry)">
+                <ion-icon name="pin" color="primary"></ion-icon>
+                <ion-label>Icon Chip</ion-label>
+                <ion-icon name="close" *ngIf="entry.isChecked"></ion-icon>
+              </ion-chip>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</ion-content>

@@ -1,0 +1,86 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title>postAds</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <div class="main-container">
+      <div class="row no-margin search-container">
+        <div class="col-12 container-padding">
+          <div class="card">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+              <div class="input-container">
+                <label class="input-label">Water Supply</label>
+                <div class="input-sec"><i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                  <select class="form-control" [ngClass]="{ 'is-invalid': submitted && f.userState.errors }">
+                    <option value="">Single Room</option>
+                  </select>
+                </div>
+              </div>
+              <div class="input-container">
+                <label class="input-label">Apartment Type</label>
+                <div class="input-sec"><i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                  <select class="form-control" [ngClass]="{ 'is-invalid': submitted && f.userState.errors }">
+                    <option value="">Single Room</option>
+                  </select>
+                </div>
+              </div>
+              <div class="input-container">
+                <label class="input-label">BHK Type</label>
+                <div class="input-sec"><i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                  <select class="form-control" [ngClass]="{ 'is-invalid': submitted && f.userState.errors }">
+                    <option value="">Single Room</option>
+                  </select>
+                </div>
+              </div>
+              <div class="input-container">
+                <label class="input-label">Gated Security</label>
+                <ion-radio-group>
+                  <ion-radio slot="start" value="Yes" name="Yes"></ion-radio>
+                  <ion-label>Yes</ion-label>
+                  <ion-radio slot="start" value="No" name="No" checked></ion-radio>
+                  <ion-label>No</ion-label>
+                </ion-radio-group>
+              </div>
+              <div class="input-container">
+                <label class="input-label">Non-Veg Allow?</label>
+                <ion-radio-group>
+                  <ion-radio slot="start" value="Yes" name="Yes" checked></ion-radio>
+                  <ion-label>Yes</ion-label>
+                  <ion-radio slot="start" value="No" name="No"></ion-radio>
+                  <ion-label>No</ion-label>
+                </ion-radio-group>
+              </div>
+              <div class="input-container">
+                <label class="input-label">Bathroom(s)</label>
+                <div class="input-sec"><i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                  <input type="number" class="form-control" placeholder="No. of Bathroom" />
+                </div>
+              </div>
+              <div class="input-container">
+                <label class="input-label">Balcony(s)</label>
+                <div class="input-sec"><i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                  <input type="number" class="form-control" placeholder="No. of Balcony" />
+                </div>
+              </div>
+              <div class="input-container">
+                <label class="input-label">Cupboard(s)</label>
+                <div class="input-sec"><i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                  <input type="number" class="form-control" placeholder="No. of Cupboard" />
+                </div>
+              </div>
+              <div class="input-container">
+                <label class="input-label">Other Amenities</label>
+                <ion-item class="amenities-item" *ngFor="let entry of form">
+                  <i class="fa fa-user-circle-o" aria-hidden="true"></i><ion-label>{{entry.val}}</ion-label>
+                  <ion-checkbox slot="end" mode="ios" [(ngModel)]="entry.isChecked" ></ion-checkbox>
+                </ion-item>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>

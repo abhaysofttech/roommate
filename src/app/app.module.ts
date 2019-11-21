@@ -8,13 +8,23 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
+import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { HomeComponent } from './home/home.component';
+import { ChoiceComponent } from './pages/choice/choice.component';
+import { MapComponent } from './pages/map/map.component';
+import { PropertyDetailsPipe } from './pages/postAds/property-details.pipe';
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent,
+    HomeComponent,
+    ChoiceComponent,
+    MapComponent,
+    PropertyDetailsPipe
+  ],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
   providers: [
     StatusBar,
+    Geolocation,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
