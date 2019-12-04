@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-amenities-details',
@@ -6,11 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./amenities-details.page.scss'],
 })
 export class AmenitiesDetailsPage implements OnInit {
+  amenitiesDetail:FormGroup;
+  loading = false;
+  submitted = false;
 
-  constructor() { }
-
-  ngOnInit() {
-  }
   public form = [
     { val: 'Air-Conditioner', isChecked: true },
     { val: 'Club', isChecked: false },
@@ -26,4 +26,35 @@ export class AmenitiesDetailsPage implements OnInit {
     { val: 'Swimming Pool', isChecked: false },
     { val: 'Internet Connectivity', isChecked: false },
   ];
+  constructor(
+    private formBuilder: FormBuilder
+
+  ) { }
+
+  ngOnInit() {
+    this.amenitiesDetail = this.formBuilder.group({
+      waterSupply: ['', Validators.required],
+      appartType: ['', Validators.required],
+      bhkType: ['', Validators.required],
+      gatedSecurity: ['', Validators.required],
+      vegNonveg: ['', Validators.required],
+      bathroom: ['', Validators.required],
+      balcony: ['', Validators.required],
+      cupboard: ['', Validators.required],
+      // otherAmeni: ['', Validators.required],
+
+    });
+  }
+  
+  onSubmit() {
+    this.submitted = true;
+
+    if (this.amenitiesDetail.invalid) {
+      return;
+    }
+    console.log(this.amenitiesDetail.value);
+
+  
 }
+}
+

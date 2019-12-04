@@ -11,35 +11,45 @@
   <div class="main-container">
     <div class="row no-margin search-container">
       <div class="col-12 container-padding">
+
+          <form [formGroup]="adpost" (ngSubmit)="onSubmit()">
+
         <div class="card">
           <div class="card-body">
+
             <div class="input-container">
               <label class="input-label">Room Type</label>
               <div class="input-sec"><i class="fa fa-user-circle-o" aria-hidden="true"></i>
-                <select class="form-control" [ngClass]="{ 'is-invalid': submitted && f.userState.errors }">
-                  <option value="">Single Room</option>
+                <select class="form-control" formControlName="roomType">
+                  <option value="Single Room">Single Room</option>
+                  <option value="Double Room">Double Room</option>
+                  <option value="Triple Room">Triple Room</option>
                 </select>
               </div>
             </div>
             <div class="input-container">
               <label class="input-label">Apartment Type</label>
               <div class="input-sec"><i class="fa fa-user-circle-o" aria-hidden="true"></i>
-                <select class="form-control" [ngClass]="{ 'is-invalid': submitted && f.userState.errors }">
-                  <option value="">Single Room</option>
+                <select class="form-control" formControlName="apparttype">
+                    <option value="abc">abc</option>
+                    <option value="xyz">xyz</option>
+                    <option value="pqr">pqr</option>
                 </select>
               </div>
             </div>
             <div class="input-container">
               <label class="input-label">BHK Type</label>
               <div class="input-sec"><i class="fa fa-user-circle-o" aria-hidden="true"></i>
-                <select class="form-control" [ngClass]="{ 'is-invalid': submitted && f.userState.errors }">
-                  <option value="">Single Room</option>
+                <select class="form-control" formControlName="bhkType">
+                    <option value="One BHK">One BHK</option>
+                    <option value="Two BHK">Two BHK</option>
+                    <option value="Three BHK">Three BHK</option>
                 </select>
               </div>
             </div>
             <div class="input-container">
               <label class="input-label">Gated Security</label>
-              <ion-radio-group>
+              <ion-radio-group formControlName="gatedSecurity">
                 <ion-radio slot="start" value="Yes" name="Yes"></ion-radio>
                 <ion-label>Yes</ion-label>
                 <ion-radio slot="start" value="No" name="No" checked></ion-radio>
@@ -48,7 +58,7 @@
             </div>
             <div class="input-container">
               <label class="input-label">Non-Veg Allow?</label>
-              <ion-radio-group>
+              <ion-radio-group formControlName="vegNonveg">
                 <div>
                     <ion-radio slot="start" value="Yes" name="Yes" checked></ion-radio>
                     <ion-label>Yes</ion-label>
@@ -63,24 +73,26 @@
             <div class="input-container">
               <label class="input-label">Bathroom(s)</label>
               <div class="input-sec"><i class="fa fa-user-circle-o" aria-hidden="true"></i>
-                <input type="number" class="form-control" placeholder="No. of Bathroom" />
+                <input type="number" class="form-control" formControlName="bathroom" placeholder="No. of Bathroom" />
               </div>
             </div>
             <div class="input-container">
               <label class="input-label">Balcony(s)</label>
               <div class="input-sec"><i class="fa fa-user-circle-o" aria-hidden="true"></i>
-                <input type="number" class="form-control" placeholder="No. of Balcony" />
+                <input type="number" class="form-control" formControlName="balcony" placeholder="No. of Balcony" />
               </div>
             </div>
             <div class="input-container">
               <label class="input-label">Cupboard(s)</label>
               <div class="input-sec"><i class="fa fa-user-circle-o" aria-hidden="true"></i>
-                <input type="number" class="form-control" placeholder="No. of Cupboard" />
+                <input type="number" class="form-control" formControlName="cupboard" placeholder="No. of Cupboard" />
               </div>
             </div>
-            <ion-button expand="full" shape="round">Save & Continue</ion-button>
+            <ion-button expand="full" type="submit" shape="round">Save & Continue</ion-button>
+            
           </div>
         </div>
+      </form>
       </div>
     </div>
   </div>

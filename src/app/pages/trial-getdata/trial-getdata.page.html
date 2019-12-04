@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>trialGetdata</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- List of Text Items -->
+<ion-list>
+  <ion-item *ngFor="let user of userData">
+    <ion-label>{{user.firstname}} {{user.lastname}}</ion-label>
+  </ion-item>
+  
+</ion-list>
+</ion-content>

@@ -11,7 +11,7 @@ const routes: Routes = [
     component:HomeComponent
   },
   {
-    path:'',
+    path:'map',
     component:MapComponent
   },
   {
@@ -31,7 +31,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/postAds/rent-details/rent-details.module').then( m => m.RentDetailsPageModule)
   },
   {
-    path: 'amenities-details',
+    path: 'amenities',
     loadChildren: () => import('./pages/postAds/amenities-details/amenities-details.module').then( m => m.AmenitiesDetailsPageModule)
   },
   {
@@ -49,7 +49,27 @@ const routes: Routes = [
   {
     path: 'search',
     loadChildren: () => import('./pages/search/search.module').then( m => m.SearchPageModule)
+  },
+  {
+    path: '',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'register',
+    loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
+  },
+  {
+    path: 'trial',
+    loadChildren: () => import('./pages/trial-getdata/trial-getdata.module').then( m => m.TrialGetdataPageModule)
+  },  {
+    path: 'demo',
+    loadChildren: () => import('./demo/demo.module').then( m => m.DemoPageModule)
   }
+
+
+
+
+  
 ];
 @NgModule({
   imports: [

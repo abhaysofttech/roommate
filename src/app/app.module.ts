@@ -13,6 +13,7 @@ import { HomeComponent } from './home/home.component';
 import { ChoiceComponent } from './pages/choice/choice.component';
 import { MapComponent } from './pages/map/map.component';
 import { PropertyDetailsPipe } from './pages/postAds/property-details.pipe';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [AppComponent,
     HomeComponent,
@@ -21,7 +22,7 @@ import { PropertyDetailsPipe } from './pages/postAds/property-details.pipe';
     PropertyDetailsPipe
   ],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
+  imports: [BrowserModule, IonicModule.forRoot(),HttpClientModule, AppRoutingModule],
   providers: [
     StatusBar,
     Geolocation,
