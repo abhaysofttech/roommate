@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/choice"></ion-back-button>
+    </ion-buttons>
+    <ion-title>My Posts</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="main-container">
+    <div class="row no-margin search-container">
+      <div class="col-12 container-padding">
+        <div class="card adsContainer" *ngFor="let ads of myAds">
+          <div class="card-body">
+            <div class="adsimage"></div>
+            <div class="postDate"><span class="postDateTitle">Post On</span><span
+                class="postDateDetails">{{ads.postdate | date: 'dd-MMM-yyyy'}}</span>
+            </div>
+            <div class="adsStatus">
+              <span class="adsstatusTitle">Active</span>
+              <ion-toggle [(ngModel)]="mushrooms"></ion-toggle>
+            </div>
+            <div class="adsAmount">
+              <i class="fa fa-inr" aria-hidden="true"></i>{{ads.rentAmount}}
+            </div>
+            <div>
+
+              {{ads.roomType}} - {{ads.bhkType}} for Rent
+            </div>
+          </div>
+          <div class="card-footer" style="text-align: center; background: #c8ccd1;">
+            <ion-button shape="round">
+              <ion-icon slot="start" name="star"></ion-icon>Detail
+            </ion-button>
+            <ion-button shape="round">Edit</ion-button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

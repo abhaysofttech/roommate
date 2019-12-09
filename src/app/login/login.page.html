@@ -18,17 +18,17 @@
                     <span>Login</span>
                   </div>
                   <div class="login-sec"><i class="fa fa-user-circle-o" aria-hidden="true"></i>
-                    <input type="number" formControlName="phonenumber" class="form-control" placeholder="तुमचे मोबाइल नंबर"
+                    <input type="number" formControlName="phonenumber" class="form-control" placeholder="Enter Your Mobile Number"
                       [ngClass]="{ 'is-invalid': submitted && f.phonenumber.errors }" />
                     <div *ngIf="submitted && f.phonenumber.errors" class="invalid-feedback">
-                      <div *ngIf="f.phonenumber.errors.required">तुमचे मोबाइल नंबर टाका</div>
+                      <div *ngIf="f.phonenumber.errors.required">Please Enter Your Register Mobile Number</div>
                     </div>
                   </div>
                   <div class="login-sec"><i class="fa fa-user-circle-o" aria-hidden="true"></i>
-                    <input type="password" formControlName="password" class="form-control"  placeholder="तुमचे password"
+                    <input type="password" formControlName="password" class="form-control"  placeholder="Enter Your Password"
                       [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
                     <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                      <div *ngIf="f.password.errors.required">तुमचे Password नंबर टाका</div>
+                      <div *ngIf="f.password.errors.required">Please Enter Your Password</div>
                     </div>
                   </div>
 

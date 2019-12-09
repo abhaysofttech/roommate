@@ -59,42 +59,42 @@
                     <!-- <input type="text" placeholder="User Name" class="form-control" 
                       name="username" required> -->
 
-                    <input type="text" formControlName="firstname" class="form-control" placeholder="तुमचे नाव"
+                    <input type="text" formControlName="firstname" class="form-control" placeholder="Your Good Name"
                       [ngClass]="{ 'is-invalid': submitted && f.firstname.errors }" />
                     
                   </div>
                   <div *ngIf="submitted && f.firstname.errors" class="invalid-feedback-error">
-                    <div *ngIf="f.firstname.errors.required">तुमचे नाव टाका </div>
+                    <div *ngIf="f.firstname.errors.required">Please Enter Your Good Name ! </div>
                   </div>
                   <div class="login-sec"><i class="fa fa-user-circle-o" aria-hidden="true"></i>
                     <!-- <input type="text" placeholder="User Name" class="form-control" 
                       name="username" required> -->
 
-                    <input type="text" formControlName="lastname" class="form-control" placeholder="तुमचे आडनाव"
+                    <input type="text" formControlName="lastname" class="form-control" placeholder="Enter LastName"
                       [ngClass]="{ 'is-invalid': submitted && f.lastname.errors }" />
                    
                   </div>
                   <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback-error">
-                    <div *ngIf="f.lastname.errors.required">तुमचे आडनाव टाका</div>
+                    <div *ngIf="f.lastname.errors.required">Please Enter You LastName</div>
                   </div>
                   <div class="login-sec"><i class="fa fa-user-circle-o" aria-hidden="true"></i>
                     <!-- <input type="text" placeholder="User Name" class="form-control" 
                       name="username" required> -->
 
-                    <input type="tel" formControlName="phonenumber" class="form-control" placeholder="तुमचे मोबाइल नंबर"
+                    <input type="tel" formControlName="phonenumber" class="form-control" placeholder="Enter Phone Number"
                       [ngClass]="{ 'is-invalid': submitted && f.phonenumber.errors }" />
                    
                   </div>
                   <div *ngIf="submitted && f.phonenumber.errors" class="invalid-feedback-error">
-                    <div *ngIf="f.phonenumber.errors.required">तुमचे मोबाइल नंबर टाका</div>
+                    <div *ngIf="f.phonenumber.errors.required">Please Enter Phone Number</div>
                   </div>
                   <div class="login-sec"><i class="fa fa-user-circle-o" aria-hidden="true"></i>
-                    <input type="password" formControlName="password" class="form-control"  placeholder="तुमचे Password नंबर"
+                    <input type="password" formControlName="password" class="form-control"  placeholder="Enter You Choice Password"
                       [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
                     
                   </div>
                   <div *ngIf="submitted && f.password.errors" class="invalid-feedback-error">
-                    <div *ngIf="f.password.errors.required">तुमचे Password नंबर टाका</div>
+                    <div *ngIf="f.password.errors.required">Please Enter Your Password</div>
                   </div>
 
                   <div class="signin-sec margin-top">

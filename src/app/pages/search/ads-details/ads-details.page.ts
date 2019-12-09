@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { PostadsService } from 'src/app/_service/postads.service';
 
 @Component({
-  selector: 'app-ads',
-  templateUrl: './ads.page.html',
-  styleUrls: ['./ads.page.scss'],
+  selector: 'app-ads-details',
+  templateUrl: './ads-details.page.html',
+  styleUrls: ['./ads-details.page.scss'],
 })
-export class AdsPage implements OnInit {
+export class AdsDetailsPage implements OnInit {
+
   slideOpts = {
     initialSlide: 0,
     speed: 400,
@@ -34,5 +35,4 @@ export class AdsPage implements OnInit {
         console.log(res);
       })
   }
-
 }

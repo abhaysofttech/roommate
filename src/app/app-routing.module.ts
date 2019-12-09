@@ -27,11 +27,11 @@ const routes: Routes = [
     loadChildren: () => import('./pages/postAds/location-details/location-details.module').then( m => m.LocationDetailsPageModule)
   },
   {
-    path: 'rent-details',
+    path: 'rent-details/:id',
     loadChildren: () => import('./pages/postAds/rent-details/rent-details.module').then( m => m.RentDetailsPageModule)
   },
   {
-    path: 'amenities',
+    path: 'amenities/:id',
     loadChildren: () => import('./pages/postAds/amenities-details/amenities-details.module').then( m => m.AmenitiesDetailsPageModule)
   },
   {
@@ -39,7 +39,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/postAds/ads-images/ads-images.module').then( m => m.AdsImagesPageModule)
   },
   {
-    path: 'post-ads',
+    path: 'postads',
     loadChildren: () => import('./pages/postAds/post-ads/post-ads.module').then( m => m.PostAdsPageModule)
   },
   {
@@ -61,10 +61,20 @@ const routes: Routes = [
   {
     path: 'trial',
     loadChildren: () => import('./pages/trial-getdata/trial-getdata.module').then( m => m.TrialGetdataPageModule)
-  },  {
+  },
+  {
     path: 'demo',
     loadChildren: () => import('./demo/demo.module').then( m => m.DemoPageModule)
+  },
+  {
+    path: 'mypost',
+    loadChildren: () => import('./pages/search/mypost/mypost.module').then( m => m.MypostPageModule)
+  },
+  {
+    path: 'ads-details',
+    loadChildren: () => import('./pages/search/ads-details/ads-details.module').then( m => m.AdsDetailsPageModule)
   }
+
 
 
 

@@ -38,7 +38,7 @@
     margin: auto;
     }
 }
-.main-container{background: #f7f5f5;}
+.main-container{background: #f7f5f5;    height: 100%;}
 .full-height{height: 100%;}
 .container-padding{padding:10px !important;}.input-container {
     margin-bottom: 1.2rem;
@@ -70,10 +70,17 @@
         align-items: center;
         border: 1px solid #ccc;
         i {
-          padding: 7px;
+        //   padding: 7px;
+        // font-size: 1.5rem;
+        // color: #053463;
+        // padding-right: 8px;
+        padding: 7px;
         font-size: 1.5rem;
-        color: #053463;
+        color: #0c5460;
         padding-right: 8px;
+        width: 40px;
+        text-align: center;
+        align-items: center;
         }
         input[type="text"] {
           background: transparent;

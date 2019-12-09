@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PostadsService } from 'src/app/_service/postads.service';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-post-ads',
@@ -9,19 +10,23 @@ import { PostadsService } from 'src/app/_service/postads.service';
   styleUrls: ['./post-ads.page.scss'],
 })
 export class PostAdsPage implements OnInit {
-  adpost:FormGroup;
+  adpost: FormGroup;
   loading = false;
   submitted = false;
+  adsArray: Array<string> = [];
 
   constructor(
     private formBuilder: FormBuilder,
-    private _postadsService:PostadsService,
-    private route:Router
+    private _postadsService: PostadsService,
+    private route: Router,
+    private storage: Storage,
   ) { }
 
   ngOnInit() {
     this.adpost = this.formBuilder.group({
       roomType: ['', Validators.required],
+      gender: ['', Validators.required],
+      marital: ['', Validators.required],
       apparttype: ['', Validators.required],
       bhkType: ['', Validators.required],
       gatedSecurity: ['', Validators.required],
@@ -33,27 +38,47 @@ export class PostAdsPage implements OnInit {
 
     });
   }
-   // convenience getter for easy access to form fields
+  // convenience getter for easy access to form fields
 
-   get f() {
+  get f() {
     return this.adpost.controls;
   }
   onSubmit() {
     // debugger;
+    this.adsArray = [];
     this.submitted = true;
 
     // stop here if form is invalid
     if (this.adpost.invalid) {
       return;
     }
-    console.log(this.adpost.value);
-    this._postadsService.postadsf(this.adpost.value)
-    .subscribe(
-      data =>{
-        console.log(data);
-      }
-    )
+    this.storage.get('phonenumber').then((phonenumber) => {
+      this.storage.get('username').then((username) => {
+        this.adpost.value.phonenumber = phonenumber;
+        this.adpost.value.username = username;
+
+        this._postadsService.postAds(this.adpost.value)
+          .subscribe(
+            data => {
+              console.log(data);
+              this.storage.get('myads').then((adsDetails) => {
+                if (adsDetails) {
+                  this.adsArray = adsDetails.split(',')
+                }
+                //   adsDetails?{ this.adsArray.push(JSON.parse(adsDetails))}:'';
+                this.adsArray.push(data.toString());
+  
+                this.storage.set('myads', this.adsArray.toString());
+                this.route.navigate(['/rent-details', data]);
+              })
+  
+            }
+          )
+      });
+   
+    });
 
 
-}
+
+  }
 }

@@ -14,6 +14,7 @@ import { ChoiceComponent } from './pages/choice/choice.component';
 import { MapComponent } from './pages/map/map.component';
 import { PropertyDetailsPipe } from './pages/postAds/property-details.pipe';
 import { HttpClientModule } from '@angular/common/http';
+import { IonicStorageModule } from '@ionic/storage';
 @NgModule({
   declarations: [AppComponent,
     HomeComponent,
@@ -22,7 +23,11 @@ import { HttpClientModule } from '@angular/common/http';
     PropertyDetailsPipe
   ],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(),HttpClientModule, AppRoutingModule],
+  imports: [BrowserModule, IonicModule.forRoot(),
+    IonicStorageModule.forRoot({
+      name: '__roommatedb',
+      driverOrder: ['indexeddb', 'sqlite', 'websql']
+    }), HttpClientModule, AppRoutingModule],
   providers: [
     StatusBar,
     Geolocation,
@@ -31,4 +36,4 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

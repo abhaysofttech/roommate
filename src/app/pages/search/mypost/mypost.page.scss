@@ -1,0 +1,50 @@
+.adsContainer{
+    margin-top: 65px;
+    .card-body{
+        padding-top:60px ;
+    }
+    .adsAmount{
+        font-size: 1.3rem;
+    color: #c41200;
+    }
+    .adsStatus {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        top: 28px;
+        right: 0px;
+    }
+    .postDate {
+        position: absolute;
+        right: 5px;
+        top: 3px;
+        .postDateTitle {
+            font-size: 13px;
+            background: #ffc107;
+            padding: 3px 8px;
+            border-radius: 53px 0 0 53px;
+        }
+        .postDateDetails {
+            font-size: 13px;
+            background: #0e99af;
+            padding: 3px 8px;
+            border-radius: 0 53px 53px 0;
+            color: #fff;
+            margin-left: 2px;
+        }
+    }
+    .adsimage {
+        border: 2px solid #f6f6f6;
+        position: absolute;
+        width: 100px;
+        left: 10px;
+        height: 100px;
+        top: -50px;
+        border-radius: 50%;
+        background: #fff;
+        box-shadow: 1px -1px 10px #ccc;
+        background-image: url('../../../../assets/imgs/blank-avatar.jpg');
+        background-position: center;
+        background-size: cover;
+    }   
+}

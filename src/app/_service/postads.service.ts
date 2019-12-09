@@ -8,12 +8,26 @@ export class PostadsService {
   SERVER_URL = 'http://localhost:4000';
 
   constructor(
-    private http:HttpClient
+    private http: HttpClient
   ) { }
-  getAll(){
+  getAll() {
     return this.http.get(`${this.SERVER_URL}/postads`);
   }
-  postadsf(ads){
+  getMyAds() {
+    return this.http.get(`${this.SERVER_URL}/postads`);
+  }
+  postAds(ads) {
     return this.http.post(`${this.SERVER_URL}/postads/newads`, ads);
+  }
+  
+  updateRent(id: string, rents: any) {
+    debugger
+    return this.http.put(`${this.SERVER_URL}/postads/updaterents/${id}`, rents);
+
+  }
+  updateAmenities(id: string, amenities: any) {
+    debugger
+    return this.http.put(`${this.SERVER_URL}/postads/updateamenities/${id}`, amenities);
+
   }
 }

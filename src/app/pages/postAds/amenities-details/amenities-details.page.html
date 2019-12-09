@@ -8,82 +8,15 @@
     <div class="main-container">
       <div class="row no-margin search-container">
         <div class="col-12 container-padding">
-            <form [formGroup]="amenitiesDetail" (ngSubmit)="onSubmit()">
+            <form (ngSubmit)="onSubmit()">
 
           <div class="card">
-            <img src="..." class="card-img-top" alt="...">
             <div class="card-body">
-              <div class="input-container">
-                <label class="input-label">Water Supply</label>
-                <div class="input-sec"><i class="fa fa-user-circle-o" aria-hidden="true"></i>
-                  <select class="form-control" formControlName="waterSupply">
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                  </select>
-                </div>
-              </div>
-              <div class="input-container">
-                <label class="input-label">Apartment Type</label>
-                <div class="input-sec"><i class="fa fa-user-circle-o" aria-hidden="true"></i>
-                  <select class="form-control" formControlName="appartType">
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>                  
-                  </select>
-                </div>
-              </div>
-              <div class="input-container">
-                <label class="input-label">BHK Type</label>
-                <div class="input-sec"><i class="fa fa-user-circle-o" aria-hidden="true"></i>
-                  <select class="form-control" formControlName="bhkType">
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>                  
-                  </select>
-                </div>
-              </div>
-              <div class="input-container">
-                <label class="input-label">Gated Security</label>
-                <ion-radio-group formControlName="gatedSecurity">
-                  <ion-radio slot="start" value="Yes" name="Yes"></ion-radio>
-                  <ion-label>Yes</ion-label>
-                  <ion-radio slot="start" value="No" name="No" checked></ion-radio>
-                  <ion-label>No</ion-label>
-                </ion-radio-group>
-              </div>
-              <div class="input-container">
-                <label class="input-label">Non-Veg Allow?</label>
-                <ion-radio-group formControlName="vegNonveg">
-                  <ion-radio slot="start" value="Yes" name="Yes" checked></ion-radio>
-                  <ion-label>Yes</ion-label>
-                  <ion-radio slot="start" value="No" name="No"></ion-radio>
-                  <ion-label>No</ion-label>
-                </ion-radio-group>
-              </div>
-              <div class="input-container">
-                <label class="input-label">Bathroom(s)</label>
-                <div class="input-sec"><i class="fa fa-user-circle-o" aria-hidden="true"></i>
-                  <input type="number" class="form-control" formControlName="bathroom" placeholder="No. of Bathroom" />
-                </div>
-              </div>
-              <div class="input-container">
-                <label class="input-label">Balcony(s)</label>
-                <div class="input-sec"><i class="fa fa-user-circle-o" aria-hidden="true"></i>
-                  <input type="number" class="form-control" formControlName="balcony" placeholder="No. of Balcony" />
-                </div>
-              </div>
-              <div class="input-container">
-                <label class="input-label">Cupboard(s)</label>
-                <div class="input-sec"><i class="fa fa-user-circle-o" aria-hidden="true"></i>
-                  <input type="number" class="form-control" formControlName="cupboard" placeholder="No. of Cupboard" />
-                </div>
-              </div>
               <div class="input-container">
                 <label class="input-label">Other Amenities</label>
                 <ion-item class="amenities-item" *ngFor="let entry of form">
                   <i class="fa fa-user-circle-o" aria-hidden="true"></i><ion-label>{{entry.val}}</ion-label>
-                  <ion-checkbox slot="end"  mode="ios"></ion-checkbox>
+                  <ion-checkbox slot="end" mode="ios" [(ngModel)]="entry.isChecked" [ngModelOptions]="{standalone: true}"></ion-checkbox>
                 </ion-item>
               </div>
               <ion-button expand="full" type="submit" shape="round">Save & Continue</ion-button>
