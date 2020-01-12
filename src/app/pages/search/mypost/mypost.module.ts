@@ -7,12 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { MypostPageRoutingModule } from './mypost-routing.module';
 
 import { MypostPage } from './mypost.page';
+import { OrderByPipe } from 'src/app/_service/order-by.pipe';
+import { SharedModule } from 'src/app/_shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    SharedModule,
     MypostPageRoutingModule
   ],
   declarations: [MypostPage]

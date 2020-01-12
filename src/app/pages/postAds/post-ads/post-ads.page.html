@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/choice"></ion-back-button>
     </ion-buttons>
-    <ion-title>New Advertisement</ion-title>
+    <ion-title>{{adsId ? 'Update' : 'New'}} Advertisement</ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content>
@@ -26,22 +26,23 @@
                 </div>
               </div>
               <div class="input-container">
-                  <label class="input-label">Marital status</label>
-                  <div class="input-sec"><i class="fa fa-user-circle-o" aria-hidden="true"></i>
-                    <select class="form-control" formControlName="marital">
-                      <option value="Bachelor">Bachelor</option>
-                      <option value="Married">Married</option>
-                      <option value="Any">Any</option>
-                    </select>
-                  </div>
+                <label class="input-label">Marital status</label>
+                <div class="input-sec"><i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                  <select class="form-control" formControlName="marital">
+                    <option value="Bachelor">Bachelor</option>
+                    <option value="Married">Married</option>
+                    <option value="Any">Any</option>
+                  </select>
                 </div>
+              </div>
               <div class="input-container">
                 <label class="input-label">Room Type</label>
                 <div class="input-sec"><i class="fa fa-user-circle-o" aria-hidden="true"></i>
                   <select class="form-control" formControlName="roomType">
                     <option value="Single Room">Single Room</option>
-                    <option value="Double Room">Double Room</option>
-                    <option value="Triple Room">Triple Room</option>
+                    <option value="2 Sharing">2 Sharing</option>
+                    <option value="3 Sharing">3 Sharing</option>
+                    <option value="4 Sharing">4 Sharing</option>
                   </select>
                 </div>
               </div>
@@ -49,9 +50,9 @@
                 <label class="input-label">Apartment Type</label>
                 <div class="input-sec"><i class="fa fa-user-circle-o" aria-hidden="true"></i>
                   <select class="form-control" formControlName="apparttype">
-                    <option value="abc">abc</option>
-                    <option value="xyz">xyz</option>
-                    <option value="pqr">pqr</option>
+                    <option value="RoomMate">Room</option>
+                    <option value="PG/Hostel">PG/Hostel</option>
+                    <option value="Flat/House">Flat/House</option>
                   </select>
                 </div>
               </div>
@@ -59,33 +60,40 @@
                 <label class="input-label">BHK Type</label>
                 <div class="input-sec"><i class="fa fa-user-circle-o" aria-hidden="true"></i>
                   <select class="form-control" formControlName="bhkType">
-                    <option value="One BHK">One BHK</option>
-                    <option value="Two BHK">Two BHK</option>
-                    <option value="Three BHK">Three BHK</option>
+                    <option value="1HK">1HK</option>
+                    <option value="1BHK">1BHK</option>
+                    <option value="2BHK">2BHK</option>
+                    <option value="3BHK">3BHK</option>
+                    <option value="4BHK">4BHK</option>
+                    <option value="4BHK+">4BHK+</option>
                   </select>
                 </div>
               </div>
-              <div class="input-container">
+              <div class="input-container radio-option">
                 <label class="input-label">Gated Security</label>
                 <ion-radio-group formControlName="gatedSecurity">
                   <ion-radio slot="start" value="Yes" name="Yes"></ion-radio>
                   <ion-label>Yes</ion-label>
-                  <ion-radio slot="start" value="No" name="No" checked></ion-radio>
+                  <ion-radio slot="start" value="No" name="No"></ion-radio>
                   <ion-label>No</ion-label>
                 </ion-radio-group>
               </div>
-              <div class="input-container">
+              <div class="input-container radio-option">
                 <label class="input-label">Non-Veg Allow?</label>
                 <ion-radio-group formControlName="vegNonveg">
-                  <div>
-                    <ion-radio slot="start" value="Yes" name="Yes" checked></ion-radio>
+                    <ion-radio slot="start" value="Yes" name="Yes"></ion-radio>
                     <ion-label>Yes</ion-label>
-                  </div>
-                  <div>
                     <ion-radio slot="start" value="No" name="No"></ion-radio>
                     <ion-label>No</ion-label>
-                  </div>
-
+                </ion-radio-group>
+              </div>
+              <div class="input-container radio-option">
+                <label class="input-label">Cooking Facility</label>
+                <ion-radio-group formControlName="cooking">
+                    <ion-radio slot="start" value="Yes" name="Yes"></ion-radio>
+                    <ion-label>Yes</ion-label>
+                    <ion-radio slot="start" value="No" name="No"></ion-radio>
+                    <ion-label>No</ion-label>
                 </ion-radio-group>
               </div>
               <div class="input-container">
@@ -106,7 +114,9 @@
                   <input type="number" class="form-control" formControlName="cupboard" placeholder="No. of Cupboard" />
                 </div>
               </div>
-              <ion-button expand="full" type="submit" shape="round">Save & Continue</ion-button>
+              <!-- <ion-button expand="full" type="submit" shape="round">{{adsId ? 'Update' : 'Save'}} & Continue
+              </ion-button> -->
+              <input type="submit" class="full-submit" value="{{adsId ? 'Update' : 'Save'}} & Continue" />
 
             </div>
           </div>

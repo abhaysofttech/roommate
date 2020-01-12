@@ -71,9 +71,31 @@ const routes: Routes = [
     loadChildren: () => import('./pages/search/mypost/mypost.module').then( m => m.MypostPageModule)
   },
   {
-    path: 'ads-details',
+    path: 'ads-details/:id',
     loadChildren: () => import('./pages/search/ads-details/ads-details.module').then( m => m.AdsDetailsPageModule)
+  },
+  {
+    path: 'mypost-details/:id',
+    loadChildren: () => import('./pages/search/mypost-details/mypost-details.module').then( m => m.MypostDetailsPageModule)
+  },
+  {
+    path: 'choice-gender',
+    loadChildren: () => import('./pages/choice-gender/choice-gender.module').then( m => m.ChoiceGenderPageModule)
+  },
+  {
+    path: 'test',
+    loadChildren: () => import('./pages/test/test.module').then( m => m.TestPageModule)
+  },
+  {
+    path: 'location-select',
+    loadChildren: () => import('./pages/location-select/location-select.module').then( m => m.LocationSelectPageModule)
+  },
+  {
+    path: 'address/:id',
+    loadChildren: () => import('./pages/postAds/address/address.module').then( m => m.AddressPageModule)
   }
+
+
 
 
 

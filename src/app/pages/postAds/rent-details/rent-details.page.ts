@@ -1,7 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { PostadsService } from 'src/app/_service/postads.service';
 import { ActivatedRoute, Router } from '@angular/router';
+
+import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { NativeGeocoder, NativeGeocoderOptions, NativeGeocoderResult } from '@ionic-native/native-geocoder/ngx';
+import { Platform } from '@ionic/angular';
+
+// import { LocationService } from 'src/app/_service';
+declare var google;
+
 
 @Component({
   selector: 'app-rent-details',
@@ -10,9 +18,17 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class RentDetailsPage implements OnInit {
   adrent: FormGroup;
-  loading = false;
+  //loading = false;
   submitted = false;
   adsId = '';
+  address: string;
+  state: string;
+  city: string;
+  pincode: number;
+  latitude: number;
+  longitude: number;
+  landmark: string;
+
   constructor(
     private formBuilder: FormBuilder,
     private _postadsService: PostadsService,
@@ -21,8 +37,17 @@ export class RentDetailsPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    debugger;
     this.adrent = this.formBuilder.group({
+  
+      // address: ['', Validators.required],
+      // state: ['', Validators.required],
+      // city: ['', Validators.required],
+      // pincode: ['', Validators.required],
+      // landmark: ['', Validators.required],
+      // latitude: ['', Validators.required],
+      // longitude: ['', Validators.required],
+
+
       rentAmount: ['', Validators.required],
       depositAmount: ['', Validators.required],
       rentNegotiable: [true, Validators.required],
@@ -30,6 +55,15 @@ export class RentDetailsPage implements OnInit {
 
     });
     this.route.params.subscribe(params => this.adsId = params.id);
+    if (this.adsId) {
+      this._postadsService.getAdsDetails(this.adsId)
+        .subscribe(
+          res => {
+            this.setFormControlValues(res);
+          })
+
+    }
+
   }
   get f() {
     return this.adrent.controls;
@@ -37,7 +71,7 @@ export class RentDetailsPage implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-
+    debugger
     // if (this.amenitiesDetail.invalid) {
     //   return;
     // }
@@ -56,7 +90,8 @@ export class RentDetailsPage implements OnInit {
           // localStorage.setItem('smartvillageusers', JSON.stringify(this.localUserData));
           // this.alertService.success('State Registration successful', true);
           // this.router.navigate(['/home']);
-          this.router.navigate(['/amenities', this.adsId]);
+          this.router.navigate(['/address', this.adsId]);
+          // this.router.navigate(['/amenities', this.adsId]);
           console.log(data);
         },
         error => {
@@ -66,4 +101,28 @@ export class RentDetailsPage implements OnInit {
 
 
   }
+
+  setFormControlValues(adsData: any) {
+    this.adrent.get('rentAmount').setValue(adsData.rentAmount);
+    this.adrent.get('depositAmount').setValue(adsData.depositAmount);
+
+      // address: ['', Validators.required],
+      // state: ['', Validators.required],
+      // city: ['', Validators.required],
+      // pincode: ['', Validators.required],
+      // landmark: ['', Validators.required],
+      // latitude: ['', Validators.required],
+      // longitude: ['', Validators.required],
+
+      this.address = adsData.address;
+      this.state = adsData.state;
+      this.city = adsData.city;
+      this.pincode = adsData.pincode;
+      this.landmark = adsData.landmark;
+   
+
+  }
+
+
+
 }

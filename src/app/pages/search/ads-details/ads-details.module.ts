@@ -7,13 +7,17 @@ import { IonicModule } from '@ionic/angular';
 import { AdsDetailsPageRoutingModule } from './ads-details-routing.module';
 
 import { AdsDetailsPage } from './ads-details.page';
+import { AgePipe } from 'src/app/_service/age.pipe';
+import { SharedModule } from 'src/app/_shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AdsDetailsPageRoutingModule
+    SharedModule,
+    AdsDetailsPageRoutingModule,
+    
   ],
   declarations: [AdsDetailsPage]
 })

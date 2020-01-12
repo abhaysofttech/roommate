@@ -8,6 +8,26 @@
     color: #fff;
     box-shadow: 0 16px 38px -12px rgba(0,0,0,.56), 0 4px 25px 0 rgba(0,0,0,.12), 0 8px 10px -5px rgba(0,0,0,.2);
 }
+.Gender-sec {
+  color: #fff;
+  padding: 5px;
+  font-size: 17px;
+  vertical-align: middle;
+  display: inline-flex;
+  ion-radio-group{
+    margin-left: 25px;
+    ion-radio{
+      --color-checked: #ffc107;
+    }
+    ion-label{
+      vertical-align: text-bottom;
+      padding: 0 6px 10px ;
+      i{
+        padding-right: 8px;
+      }
+    }
+  }
+}
 .main-panel {
     position: relative;
     float: right;

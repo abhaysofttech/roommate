@@ -50,10 +50,17 @@ export class AmenitiesDetailsPage implements OnInit {
 
     // });
     this.route.params.subscribe(params => this.adsId = params.id);
+    if (this.adsId) {
+      this._postadsService.getAdsDetails(this.adsId)
+        .subscribe(
+          res => {
+            this.setFormControlValues(res);
+          })
+
+    }
   }
 
   onSubmit() {
-    debugger;
     this.submitted = true;
 
     // if (this.amenitiesDetail.invalid) {
@@ -83,6 +90,26 @@ export class AmenitiesDetailsPage implements OnInit {
         });
 
 
+  }
+
+  setFormControlValues(adsData: any) {
+   console.log(this.form);
+   this.form = [
+    { val: 'Air-Conditioner', id: 'airConditioner', isChecked: adsData.airConditioner },
+    { val: 'Club', id: 'club', isChecked: adsData.club },
+    { val: 'Playground', id: 'playground', isChecked: adsData.playground },
+    { val: 'Gas', id: 'gas', isChecked: adsData.gas },
+    { val: 'Sewage', id: 'sewage', isChecked: adsData.sewage },
+    { val: 'Power backup', id: 'powerBackup', isChecked: adsData.powerBackup },
+    { val: 'Lift', id: 'liftService', isChecked: adsData.liftService },
+    { val: 'House keeper', id: 'houseKeeper', isChecked: adsData.houseKeeper },
+    { val: 'Security', id: 'security', isChecked: adsData.security },
+    { val: 'Car Parking', id: 'carParking', isChecked: adsData.carParking },
+    { val: 'Two-Wheeler Parking', id: 'twoWheelerParking', isChecked: adsData.twoWheelerParking },
+    { val: 'Swimming Pool', id: 'swimmingPool', isChecked: adsData.swimmingPool },
+    { val: 'Internet Connectivity', id: 'internetConnectivity', isChecked: adsData.internetConnectivity }
+  ];
+    
   }
 }
 

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PostadsService } from 'src/app/_service/postads.service';
+import { ActivatedRoute, Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-ads',
@@ -10,7 +12,7 @@ export class AdsPage implements OnInit {
   slideOpts = {
     initialSlide: 0,
     speed: 400,
-    pager:true,
+    pager: true,
     autoplay: {
       delay: 2500,
       disableOnInteraction: false,
@@ -20,19 +22,32 @@ export class AdsPage implements OnInit {
       clickable: true,
     },
   };
-  Ads:any;
-
+  Ads: any;
+  reqGender = '';
+  foo: any;
   constructor(
     private _postadsService: PostadsService,
-  ) { }
+    private route: ActivatedRoute,
+    private router: Router
+
+  ) {
+    debugger
+    this.route.queryParams.subscribe(params => {
+      if (this.router.getCurrentNavigation().extras.state) {
+        this.Ads = this.router.getCurrentNavigation().extras.state.id;
+        console.log(this.Ads);
+      }
+    });
+  }
 
   ngOnInit() {
-    this._postadsService.getAll()
-    .subscribe(
-      res =>{
-        this.Ads=res;
-        console.log(res);
-      })
+    // this.route.params.subscribe(params => {this.reqGender = JSON.parse(params.id)});
+    // this._postadsService.getAllAds(this.reqGender)
+    // .subscribe(
+    //   res =>{
+    //     this.Ads=res;
+    //     console.log(res);
+    //   })
   }
 
 }

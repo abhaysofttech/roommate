@@ -7,6 +7,8 @@ import { IonicModule } from '@ionic/angular';
 import { RentDetailsPageRoutingModule } from './rent-details-routing.module';
 
 import { RentDetailsPage } from './rent-details.page';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { NativeGeocoder, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
 
 @NgModule({
   imports: [
@@ -15,6 +17,10 @@ import { RentDetailsPage } from './rent-details.page';
     ReactiveFormsModule,
     IonicModule,
     RentDetailsPageRoutingModule
+  ],
+  providers: [
+    Geolocation,
+NativeGeocoder,
   ],
   declarations: [RentDetailsPage]
 })

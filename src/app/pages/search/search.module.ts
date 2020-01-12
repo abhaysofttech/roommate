@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { SearchPageRoutingModule } from './search-routing.module';
 
 import { SearchPage } from './search.page';
+import { AgePipe } from 'src/app/_service/age.pipe';
 
 @NgModule({
   imports: [

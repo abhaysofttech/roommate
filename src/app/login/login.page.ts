@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { LoginServiceService } from '../_service/login-service.service';
 import { first } from 'rxjs/operators';
 import { Storage } from '@ionic/storage';
+import { LocationSelect } from '../pages/location-select/location-select.page';
+import { NavController, ModalController } from '@ionic/angular';
 
 
 @Component({
@@ -24,6 +26,7 @@ export class LoginPage implements OnInit {
     private loginServiceService: LoginServiceService,
     private storage: Storage,
     //  private alertService: AlertService,
+    public navCtrl: NavController, public modalCtrl: ModalController
 
 
   ) { }
@@ -33,6 +36,12 @@ export class LoginPage implements OnInit {
     this.loginForm = this.formBuilder.group({
       phonenumber: ['', Validators.required],
       password: ['', Validators.required]
+    });
+    this.storage.get('phonenumber').then((phonenumber) => {
+      //  this.route.params.subscribe(params => this.adsId = params.id);
+      if (phonenumber) {
+        this.route.navigate(['/choice']);
+      }
     });
 
   }
@@ -71,7 +80,6 @@ export class LoginPage implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          debugger;
           //  this.alertService.presentAlert(['Login successful', '', 'Hi ' + data.firstname + ', Welcome to my complain', 'OK']);
           //  if (!data.userState || !data.userDivision || !data.userDistrict || !data.userZone || !data.userZone) {
           //
@@ -80,6 +88,8 @@ export class LoginPage implements OnInit {
           // Save logged in user details in local db
           this.storage.set('phonenumber', this.f.phonenumber.value)
           this.storage.set('username', data.firstname)
+          this.storage.set('dob', data.dob)
+          this.storage.set('userGender', data.userGender)
         },
         error => {
           //  this.alertService.error(['Login Fail', '', error]);
@@ -105,4 +115,20 @@ export class LoginPage implements OnInit {
     // }
 
   }
+
+  async launchLocationPage(){
+
+   // this.route.navigate(['/location-select']);
+    let modal = await this.modalCtrl.create({
+      component: LocationSelect
+    });
+    
+
+    // // modal.onDidDismiss((location) => {
+    // //     console.log(location);
+    // // });
+
+    return await modal.present();    
+
+}
 }

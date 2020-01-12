@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NavController, Platform } from '@ionic/angular';
-import { LocationService } from 'src/app/_service';
+// import { LocationService } from 'src/app/_service';
 // import { LocationService } from '../_service/location.service';
 declare var google;
 @Component({
@@ -29,29 +29,32 @@ export class MapComponent {
   mapCenter = { lat: null, lng: null };
   markerOptions: any = { position: null, map: null, title: null };
   marker: any;
+  private geoCoder;
   constructor(
     // public http:HttpClient,
     public navCtrl: NavController,
     public platform: Platform,
-    private location: LocationService,
+    // private location: LocationService,
   ) { }
 
   ionViewDidEnter() {
-    this.location.getUserPosition().then((pos) => {
-      console.log('pos', pos);
-      this.apiResponse = pos;
-      // const latitude = this.apiResponse.coords.latitude;
-      // const longitude = this.apiResponse.coords.longitude;
+    // this.location.getUserPosition().then((pos) => {
+    //   console.log('pos', pos);
+    //   this.apiResponse = pos;
+    //   debugger
 
-      this.mapCenter.lat = this.apiResponse.coords.latitude;
-      this.mapCenter.lng = this.apiResponse.coords.longitude;
-      // this.getCentersNearby();
-      this.loadMap();
-      this.getLocation();
-    })
-      .catch((e) => {
-        console.log('e', e);
-      });
+    //   // const latitude = this.apiResponse.coords.latitude;
+    //   // const longitude = this.apiResponse.coords.longitude;
+
+    //   this.mapCenter.lat = this.apiResponse.coords.latitude;
+    //   this.mapCenter.lng = this.apiResponse.coords.longitude;
+    //   // this.getCentersNearby();
+    //   this.loadMap();
+    //   // this.gg();
+    // })
+    //   .catch((e) => {
+    //     console.log('e', e);
+    //   });
   }
 
   loadMap() {
@@ -101,23 +104,23 @@ export class MapComponent {
 
 
   //calculates distance between two points in km's ***********************
-  calcDistance(p1, p2):any {
+  calcDistance(p1, p2): any {
     return (google.maps.geometry.spherical.computeDistanceBetween(p1, p2) / 1000).toFixed(2);
   }
-  distance(lat1, lon1, lat2, lon2, unit):any {
-    var radlat1 = Math.PI * lat1/180
-    var radlat2 = Math.PI * lat2/180
-    var theta = lon1-lon2
-    var radtheta = Math.PI * theta/180
+  distance(lat1, lon1, lat2, lon2, unit): any {
+    var radlat1 = Math.PI * lat1 / 180
+    var radlat2 = Math.PI * lat2 / 180
+    var theta = lon1 - lon2
+    var radtheta = Math.PI * theta / 180
     var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
     if (dist > 1) {
       dist = 1;
     }
     dist = Math.acos(dist)
-    dist = dist * 180/Math.PI
+    dist = dist * 180 / Math.PI
     dist = dist * 60 * 1.1515
-    if (unit=="K") { dist = dist * 1.609344 }
-    if (unit=="N") { dist = dist * 0.8684 }
+    if (unit == "K") { dist = dist * 1.609344 }
+    if (unit == "N") { dist = dist * 0.8684 }
     return dist
   }
   getPosition(position) {
@@ -131,25 +134,25 @@ export class MapComponent {
       "lat": "18.54967",
       "lng": "73.941942",
       "location": "Stop 1"
-  }, {
+    }, {
       "code": "0002",
       "lat": "18.549546",
       "lng": "73.942855",
       "location": "Stop 2"
-  }, {
+    }, {
       "code": "0002",
       "lat": "18.559307",
       "lng": "73.907586",
       "location": "Stop 3"
-  }];
-  
-  for (var i = 0; i < data.length; i++) {
-    // if this location is within 0.1KM of the user, add it to the list
-    if (this.distance(parseFloat(userPosition.lat), parseFloat(userPosition.lng), data[i].lat, data[i].lng, "K") <= 0.8) {
+    }];
+
+    for (var i = 0; i < data.length; i++) {
+      // if this location is within 0.1KM of the user, add it to the list
+      if (this.distance(parseFloat(userPosition.lat), parseFloat(userPosition.lng), data[i].lat, data[i].lng, "K") <= 0.8) {
         // html += '<p>' + data[i].location + ' - ' + data[i].code + '</p>';
         console.log("location is nearest to us *********" + data[i].location + ' - ' + data[i].code)
+      }
     }
-}
 
     for (var i = 0; i < data.length; i++) {
 
@@ -175,6 +178,5 @@ export class MapComponent {
       alert("Geolocation is not supported by this browser.");
     }
   }
-
 
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PostadsService } from 'src/app/_service/postads.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-ads-details',
@@ -7,7 +8,7 @@ import { PostadsService } from 'src/app/_service/postads.service';
   styleUrls: ['./ads-details.page.scss'],
 })
 export class AdsDetailsPage implements OnInit {
-
+  adsId = '';
   slideOpts = {
     initialSlide: 0,
     speed: 400,
@@ -25,10 +26,13 @@ export class AdsDetailsPage implements OnInit {
 
   constructor(
     private _postadsService: PostadsService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
-    this._postadsService.getAll()
+    this.route.params.subscribe(params => this.adsId = params.id);
+
+    this._postadsService.getAdsDetails(this.adsId)
     .subscribe(
       res =>{
         this.Ads=res;

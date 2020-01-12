@@ -1,8 +1,8 @@
-<!-- <p>
+<p>
   home works!
 </p>
-<div #map id="map" class="map"></div> -->
-<div class="row no-margin main-container full-height">
+<!-- <div #map id="map" class="map"></div> -->
+<!-- <div class="row no-margin main-container full-height">
   <div class="col-12">
     <div class="option-select">
         <img src="../../assets/images/user.png" />
@@ -14,4 +14,18 @@
           <img src="../../assets/images/female.png" />
       </div>
   </div>
+</div> -->
+
+<div class="form-group">
+  <label>Enter address</label>
+  <input type="search" class="form-control" (keydown.enter)="$event.preventDefault()" placeholder="Search Nearest Location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" #search>
 </div>
+
+<agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom" [mapDraggable]="true" (dragEnd)="mapDragEnd($event)">
+  <agm-marker [latitude]="latitude" [longitude]="longitude" [markerDraggable]="true"
+    (dragEnd)="markerDragEnd($event)"></agm-marker>
+</agm-map>
+
+<h5>Address: {{address}}</h5>
+<div>Latitude: {{latitude}}</div>
+<div>Longitude: {{longitude}}</div>

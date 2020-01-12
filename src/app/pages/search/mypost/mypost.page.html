@@ -7,35 +7,58 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <div class="main-container">
+  <div class="main-container1">
     <div class="row no-margin search-container">
-      <div class="col-12 container-padding">
-        <div class="card adsContainer" *ngFor="let ads of myAds">
-          <div class="card-body">
-            <div class="adsimage"></div>
-            <div class="postDate"><span class="postDateTitle">Post On</span><span
+      <div class="col-12 container-padding" *ngIf="myAds">
+        <div class="card" *ngFor="let ads of myAds | orderBy:'-postdate'">
+          <div class="card-body no-padding" [routerLink]="['/ads-details', ads.id]">
+
+            <ion-slides pager="true" [options]="slideOpts">
+              <ion-slide>
+                <img src="../../../../assets/images/image1.jpg">
+              </ion-slide>
+              <ion-slide>
+                <img src="../../../../assets/images/image2.jpg">
+              </ion-slide>
+              <ion-slide>
+                <img src="../../../../assets/images/image3.jpg">
+              </ion-slide>
+            </ion-slides>
+            <div class="adsDetails">
+              <div class="adsOwner">
+                <span class="rupees_icon"><i class="fa fa-inr" aria-hidden="true"></i>
+                </span><span class="amount"> {{ads.rentAmount}} </span><span class="month">/Month</span>
+              </div>
+              <!-- <div class="profilePicOwner">
+                <i class="fa fa-check-circle" aria-hidden="true"></i>
+              </div> -->
+              <div class="postDate"><span class="postDateTitle">Post On</span><span
                 class="postDateDetails">{{ads.postdate | date: 'dd-MMM-yyyy'}}</span>
             </div>
-            <div class="adsStatus">
-              <span class="adsstatusTitle">Active</span>
-              <ion-toggle [(ngModel)]="mushrooms"></ion-toggle>
-            </div>
-            <div class="adsAmount">
-              <i class="fa fa-inr" aria-hidden="true"></i>{{ads.rentAmount}}
-            </div>
-            <div>
-
-              {{ads.roomType}} - {{ads.bhkType}} for Rent
+              <!-- <div class="rentDetails">
+                <span class="rupees_icon"><i class="fa fa-inr" aria-hidden="true"></i>
+                </span><span class="amount"> {{ads.rentAmount}} </span><span class="month">/Month</span>
+              </div> -->
+              <div class="adsAddressDetails">
+                <div class="adsTitle">{{ads.roomType}} for {{ads.gender}} in {{ads.city}}</div>
+                <div class="adsAddress">{{ads.shortaddress}}</div>
+              </div>
+              <!-- <span class="postedOn">Posted on: - {{ads.postdate | date: 'dd-MMM-yyyy'}}</span> -->
+              <div class="adsStatus">
+                <ion-button *ngIf="ads.adsStatus" shape="round" size="small" [routerLink]="['/postads', ads.id]">
+                  <ion-icon slot="start" name="power"></ion-icon>close</ion-button>
+              </div>
             </div>
           </div>
-          <div class="card-footer" style="text-align: center; background: #c8ccd1;">
-            <ion-button shape="round">
-              <ion-icon slot="start" name="star"></ion-icon>Detail
-            </ion-button>
-            <ion-button shape="round">Edit</ion-button>
-
+          <div class="card-footer contact-container" style="text-align: center; ">
+              <ion-button shape="round" [routerLink]="['/mypost-details', ads.id]">
+                <ion-icon slot="start" name="book"></ion-icon>Detail
+              </ion-button>
+              <ion-button shape="round" [routerLink]="['/postads', ads.id]">
+                <ion-icon slot="start" name="create"></ion-icon>Edit</ion-button>
           </div>
         </div>
+       
       </div>
     </div>
   </div>

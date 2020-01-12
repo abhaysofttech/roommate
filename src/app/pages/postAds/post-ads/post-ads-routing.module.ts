@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: PostAdsPage
+  },
+  {
+    path: ':id',
+    component: PostAdsPage
   }
 ];
 

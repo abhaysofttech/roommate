@@ -1,8 +1,11 @@
 <ion-header>
-    <ion-toolbar>
-      <ion-title>postAds</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/choice"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{adsId ? 'Update' : 'Add'}} Amenities</ion-title>
+  </ion-toolbar>
+</ion-header>
   
   <ion-content>
     <div class="main-container">
@@ -19,7 +22,7 @@
                   <ion-checkbox slot="end" mode="ios" [(ngModel)]="entry.isChecked" [ngModelOptions]="{standalone: true}"></ion-checkbox>
                 </ion-item>
               </div>
-              <ion-button expand="full" type="submit" shape="round">Save & Continue</ion-button>
+              <input type="submit" class="full-submit" value="{{adsId ? 'Update' : 'Save'}} & Continue" />
             </div>
           </div>
           </form>
