@@ -9,7 +9,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
-import { NativeGeocoder,NativeGeocoderOptions,NativeGeocoderResult } from '@ionic-native/native-geocoder/ngx';
+import { NativeGeocoder, NativeGeocoderOptions, NativeGeocoderResult } from '@ionic-native/native-geocoder/ngx';
 
 import { HomeComponent } from './home/home.component';
 import { ChoiceComponent } from './pages/choice/choice.component';
@@ -25,6 +25,7 @@ import { Network } from '@ionic-native/network/ngx';
 import { LocationSelect } from './pages/location-select/location-select.page';
 
 import { AgmCoreModule } from '@agm/core';
+import { SharedModule } from './_shared/shared.module';
 
 @NgModule({
   declarations: [AppComponent,
@@ -33,10 +34,10 @@ import { AgmCoreModule } from '@agm/core';
     MapComponent,
     PropertyDetailsPipe,
     LocationSelect
-    
+
   ],
   entryComponents: [LocationSelect],
-  imports: [BrowserModule, IonicModule.forRoot(),
+  imports: [BrowserModule, SharedModule, IonicModule.forRoot(),
     IonicStorageModule.forRoot({
       name: '__roommatedb',
       driverOrder: ['indexeddb', 'sqlite', 'websql']

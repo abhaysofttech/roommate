@@ -21,8 +21,8 @@ export class PostadsService {
     return this.http.get(`${SERVER_URL}/postads/cities`);
 
   }
-  getAreas(){
-    return this.http.get(`${SERVER_URL}/postads/areas`);
+  getAreas(param){
+    return this.http.get(`${SERVER_URL}/postads/areas/${param}`);
 
   }
   searchAds(options){

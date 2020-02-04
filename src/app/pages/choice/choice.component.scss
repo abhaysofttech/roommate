@@ -1,0 +1,14 @@
+.land{
+    background-image: url('../../../assets/images/land.jpg');
+    background-position: center;
+    background-size: cover;
+}
+.logo-container{height: 50px;}
+.choice-container{
+    height: auto;
+    min-height: calc(100% - 50px);
+}
+.rm_logo{
+    width: 185px;
+    margin: 0 auto;
+}

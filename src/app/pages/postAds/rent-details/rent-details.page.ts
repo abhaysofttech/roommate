@@ -58,7 +58,12 @@ export class RentDetailsPage implements OnInit {
     if (this.adsId) {
       this._postadsService.getAdsDetails(this.adsId)
         .subscribe(
-          res => {
+          (res: any) => {
+            debugger
+            if(res.city === ''){
+              this.router.navigate(['/address', this.adsId]);
+
+            }
             this.setFormControlValues(res);
           })
 

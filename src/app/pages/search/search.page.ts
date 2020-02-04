@@ -20,18 +20,20 @@ export class SearchPage implements OnInit {
   RoomType: any;
   flatType: any;
   genderType: any;
-
+  selectedCities:string;
+  selectedArea:string;
   priceRange: any;
+  public loading:boolean = false;
 
   selectedBuildingType: string = 'RoomMate'
 
   private geoCoder;
   @ViewChild('search', { static: false })
   public searchElementRef: ElementRef;
-    constructor(public nav: NavController,private router: Router,  private _postadsService: PostadsService,
-      private mapsAPILoader: MapsAPILoader,
-      private ngZone: NgZone,) {
-   
+  constructor(public nav: NavController, private router: Router, private _postadsService: PostadsService,
+    private mapsAPILoader: MapsAPILoader,
+    private ngZone: NgZone, ) {
+
     this.priceRange = { lower: 2000, upper: 20000 };
     this.bedRoom = [
       { val: 'Pepperoni', isChecked: true },
@@ -66,6 +68,7 @@ export class SearchPage implements OnInit {
   }
 
   ngOnInit() {
+    this.loading = true;
     this.selectedLocation = "test"
     this.location = [{ id: 0, name: 'Tokai' },
     { id: 1, name: 'Tokaiq' }]
@@ -74,7 +77,7 @@ export class SearchPage implements OnInit {
   ionViewDidEnter() {
 
     this.mapsAPILoader.load().then(() => {
-     // this.setCurrentLocation();
+      // this.setCurrentLocation();
       this.geoCoder = new google.maps.Geocoder;
       let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
         types: ["geocode"],
@@ -117,38 +120,50 @@ export class SearchPage implements OnInit {
     this.genderType.filter(function (item) { return item.val != param.val }).map(data => data.isChecked = false);
   }
 
-  findCities(){
+  findCities() {
     this._postadsService.getCities()
-    .subscribe(
-      res =>{
-        this.city = res;
-        this._postadsService.getAreas()
-        .subscribe(
-          area =>{
-            this.areas = area;
-          })
-      })
+      .subscribe(
+        res => {
+          this.city = res;
+          this.selectedCities = res[0];
+          this.findAreas(res[0]);
+        })
   }
+
+  findAreas(area) {
+    console.log();
+    this._postadsService.getAreas(area)
+      .subscribe(
+        area => {
+          this.areas = area;
+          this.selectedArea = area[0].area;
+          setInterval(() => {
+                     this.loading = false;
+            }, 1000);
+        })
+  }
+
   findAds() {
+    this.loading = true //. loading
     let gender = this.genderType.filter(function (item) { return item.isChecked == true });
-    if(gender[0].val === 'Any'){
-      gender = ['Any','Male','Female'];
+    if (gender[0].val === 'Any') {
+      gender = ['Any', 'Male', 'Female'];
     }
-    else{
+    else {
       gender = gender[0].val;
     }
     let building = this.buildingType.filter(function (item) { return item.isChecked == true });
-    if(building[0].val === 'Any'){
-      building = ['RoomMate','PG/Hostel','Flat/House'];
+    if (building[0].val === 'Any') {
+      building = ['RoomMate', 'PG/Hostel', 'Flat/House'];
     }
-    else{
+    else {
       building = building[0].val;
     }
     let room = this.RoomType.filter(function (item) { return item.isChecked == true }).map(data => { return data.val });
     let flat = this.flatType.filter(function (item) { return item.isChecked == true });
     let options = {
       location: this.location,
-      searchArea: this.searchArea,
+      area: this.selectedArea,
       apparttype: building,
       roomType: room,
       flatType: flat[0].val,
@@ -156,16 +171,13 @@ export class SearchPage implements OnInit {
       rentAmount: this.priceRange
     };
 
-    console.log(options);
- //   this.router.navigate(['path'])
-
     this._postadsService.searchAds(options)
-    .subscribe(
-      res =>{
-      //  this.nav.navigateForward(['ads', JSON.stringify(res)]);
-        let navigationExtras: NavigationExtras = { state: { id: res } };
-        this.router.navigate(['ads'], navigationExtras);
-      })
-  
+      .subscribe(
+        res => {
+          //  this.nav.navigateForward(['ads', JSON.stringify(res)]);
+          let navigationExtras: NavigationExtras = { state: { id: res } };
+          this.router.navigate(['ads'], navigationExtras);
+        })
+
   }
 }

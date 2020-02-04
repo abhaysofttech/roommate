@@ -29,7 +29,7 @@ export class PostAdsPage implements OnInit {
       roomType: ['Single Room', Validators.required],
       gender: ['Male', Validators.required],
       marital: ['Bachelor', Validators.required],
-      apparttype: ['Room', Validators.required],
+      apparttype: ['RoomMate', Validators.required],
       bhkType: ['1BHK', Validators.required],
       gatedSecurity: ['No', Validators.required],
       cooking: ['No', Validators.required],

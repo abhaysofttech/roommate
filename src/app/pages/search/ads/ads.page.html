@@ -3,16 +3,24 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/search"></ion-back-button>
     </ion-buttons>
-    <ion-title>Room's for {{reqGender}} near me</ion-title>
+    <ion-title class="no-padding">
+      <img class="rm_header_logo" src="../../../assets/images/roommate_logo.svg" />
+      <span class="tab-title">My Ads</span>
+    </ion-title>
+    
   </ion-toolbar>
 </ion-header>
 <ion-content>
   <div class="main-container full-height">
     <div class="row no-margin search-container">
-      <div *ngIf="Ads" class="col-12 container-padding">
-        <div class="card" *ngFor="let ads of Ads | orderBy:'-postdate'">
+      
+      <div class="col-12 container-padding">
+        <app-loading-spinner [loadingType]="'bar'" *ngIf="loading">
+        </app-loading-spinner>
+        <ng-container *ngIf="Ads">
+         <div class="card" *ngFor="let ads of Ads | orderBy:'-postdate'">
           <div class="card-body no-padding" [routerLink]="['/ads-details', ads.id]">
-
+           
             <ion-slides pager="true" [options]="slideOpts">
               <ion-slide>
                 <img src="../../../../assets/images/image1.jpg">
@@ -48,6 +56,7 @@
             </div>
           </div>
         </div>
+        </ng-container>
       </div>
       <div *ngIf="Ads == ''" class="col-12 container-padding">
         <span>No Ads Found !.. Keep in touch..</span>

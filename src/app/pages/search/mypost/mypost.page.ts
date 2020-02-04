@@ -24,9 +24,13 @@ export class MypostPage implements OnInit {
   //  this.route.params.subscribe(params => this.adsId = params.id);
     this._postadsService.getMyAds(phonenumber)
     .subscribe(
-      res =>{
+      (res:any) =>{
         this.myAds=res;
         console.log(res);
+        let myAdsWithNoAddress:any = res.filter(x=>{ return x.city === ''}).map( data => {return data} );
+        if(myAdsWithNoAddress.length > 0 ){
+          this.router.navigate(['/address', myAdsWithNoAddress[0].id]);
+        }
       })
     });
   }

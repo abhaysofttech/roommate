@@ -25,6 +25,7 @@ export class AdsPage implements OnInit {
   Ads: any;
   reqGender = '';
   foo: any;
+  public loading:boolean=true;
   constructor(
     private _postadsService: PostadsService,
     private route: ActivatedRoute,
@@ -36,6 +37,8 @@ export class AdsPage implements OnInit {
       if (this.router.getCurrentNavigation().extras.state) {
         this.Ads = this.router.getCurrentNavigation().extras.state.id;
         console.log(this.Ads);
+        this.loading = false;
+
       }
     });
   }

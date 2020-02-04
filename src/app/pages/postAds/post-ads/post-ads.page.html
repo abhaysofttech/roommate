@@ -3,7 +3,11 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/choice"></ion-back-button>
     </ion-buttons>
-    <ion-title>{{adsId ? 'Update' : 'New'}} Advertisement</ion-title>
+    <ion-title class="no-padding">
+      <img class="rm_header_logo" src="../../../assets/images/roommate_logo.svg" />
+      
+      <span class="tab-title">{{adsId ? 'Update' : 'New'}} Ads</span>
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content>
@@ -36,6 +40,16 @@
                 </div>
               </div>
               <div class="input-container">
+                <label class="input-label">Apartment Type</label>
+                <div class="input-sec"><i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                  <select class="form-control" formControlName="apparttype">
+                    <option value="RoomMate">Room</option>
+                    <option value="PG/Hostel">PG/Hostel</option>
+                    <option value="Flat/House">Flat/House</option>
+                  </select>
+                </div>
+              </div>
+              <div class="input-container" *ngIf="adpost.value.apparttype !== 'Flat/House'">
                 <label class="input-label">Room Type</label>
                 <div class="input-sec"><i class="fa fa-user-circle-o" aria-hidden="true"></i>
                   <select class="form-control" formControlName="roomType">
@@ -46,17 +60,7 @@
                   </select>
                 </div>
               </div>
-              <div class="input-container">
-                <label class="input-label">Apartment Type</label>
-                <div class="input-sec"><i class="fa fa-user-circle-o" aria-hidden="true"></i>
-                  <select class="form-control" formControlName="apparttype">
-                    <option value="RoomMate">Room</option>
-                    <option value="PG/Hostel">PG/Hostel</option>
-                    <option value="Flat/House">Flat/House</option>
-                  </select>
-                </div>
-              </div>
-              <div class="input-container">
+              <div class="input-container" *ngIf="adpost.value.apparttype === 'Flat/House'">
                 <label class="input-label">BHK Type</label>
                 <div class="input-sec"><i class="fa fa-user-circle-o" aria-hidden="true"></i>
                   <select class="form-control" formControlName="bhkType">

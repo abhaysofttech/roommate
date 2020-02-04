@@ -3,7 +3,10 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/ads"></ion-back-button>
     </ion-buttons>
-    <ion-title *ngIf="Ads">{{Ads.roomType}} for {{Ads.gender}} </ion-title>
+    <!-- <ion-title *ngIf="Ads">{{Ads.roomType}} for {{Ads.gender}} </ion-title> -->
+    <ion-title class="no-padding">
+      <img class="rm_header_logo" src="../../../assets/images/roommate_logo.svg" />
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content>

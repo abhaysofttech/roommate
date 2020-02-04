@@ -4,9 +4,11 @@ import { AgePipe } from '../_service/age.pipe';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { OrderByPipe } from '../_service/order-by.pipe';
+import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
+    LoadingSpinnerComponent,
    AgePipe,
    OrderByPipe
   ],
@@ -19,6 +21,7 @@ import { OrderByPipe } from '../_service/order-by.pipe';
     // NgbModule,
   ],
   exports:[
+    LoadingSpinnerComponent,
     AgePipe,
     OrderByPipe
   ]

@@ -8,12 +8,14 @@ import { SearchPageRoutingModule } from './search-routing.module';
 
 import { SearchPage } from './search.page';
 import { AgePipe } from 'src/app/_service/age.pipe';
+import { SharedModule } from 'src/app/_shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    SharedModule,
     SearchPageRoutingModule
   ],
   declarations: [SearchPage]
